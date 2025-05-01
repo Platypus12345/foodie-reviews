@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie Reviews</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">Foodie Reviews</a></h1>
+            <p>Discover the best restaurants in your city</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="restaurants.html">Restaurants</a></li>
+                <li><a href="top-rated.html">Top Rated</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="login-btn">Login</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" placeholder="Search restaurants..." id="search-input">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="featured">
+            <h2>Featured Restaurants</h2>
+            <div class="restaurant-list" id="featured-restaurants">
+                <!-- Filled by JavaScript -->
+            </div>
+        </section>
+
+        <section class="add-review">
+            <h2>Add Your Review</h2>
+            <form id="review-form">
+                <div class="form-group">
+                    <label for="restaurant-name">Restaurant Name:</label>
+                    <input type="text" id="restaurant-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="cuisine-type">Cuisine Type:</label>
+                    <select id="cuisine-type" required>
+                        <option value="">Select Cuisine</option>
+                        <option value="italian">Italian</option>
+                        <option value="mexican">Mexican</option>
+                        <option value="indian">Indian</option>
+                        <option value="chinese">Chinese</option>
+                        <option value="american">American</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reviewer-name">Your Name:</label>
+                    <input type="text" id="reviewer-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Rating:</label>
+                    <div class="star-rating">
+                        <i class="far fa-star" data-rating="1"></i>
+                        <i class="far fa-star" data-rating="2"></i>
+                        <i class="far fa-star" data-rating="3"></i>
+                        <i class="far fa-star" data-rating="4"></i>
+                        <i class="far fa-star" data-rating="5"></i>
+                    </div>
+                    <input type="hidden" id="rating-value" required>
+                </div>
+                <div class="form-group">
+                    <label for="review-text">Review:</label>
+                    <textarea id="review-text" rows="4" required></textarea>
+                </div>
+                <button type="submit">Submit Review</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Foodie Reviews. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function updateRestaurantDisplay() {
+            const container = document.getElementById('featured-restaurants');
+            if (container) {
+                container.innerHTML = restaurants.slice(0, 3).map(createRestaurantCard).join('');
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', updateRestaurantDisplay);
+    </script>
+</body>
+</html>

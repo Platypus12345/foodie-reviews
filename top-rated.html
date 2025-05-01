@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Rated | Foodie Reviews</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Same header/nav as index.html -->
+
+    <main class="container">
+        <section class="restaurants">
+            <h2>Top Rated Restaurants</h2>
+            <p>Only the best with 4+ star ratings</p>
+            <div class="restaurant-list" id="top-rated-restaurants">
+                <!-- Filled by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Same footer as index.html -->
+
+    <script src="script.js"></script>
+    <script>
+        function updateRestaurantDisplay() {
+            const topRated = restaurants.filter(r => r.rating >= 4);
+            document.getElementById('top-rated-restaurants').innerHTML = 
+                topRated.map(createRestaurantCard).join('') || 
+                '<p class="no-results">No top rated restaurants yet</p>';
+        }
+        
+        document.addEventListener('DOMContentLoaded', updateRestaurantDisplay);
+    </script>
+</body>
+</html>
